@@ -1,8 +1,3 @@
-# WPF-UIBasic
-
-## 介绍
-简单WPF UI入门知识代码。
-
 ##WPF UI布局
 
 > StackPanel

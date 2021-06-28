@@ -1,0 +1,51 @@
+﻿<Window x:Class="UIDataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UIDataBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <TextBox x:Key="txt">Hello</TextBox>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <!--绑定控件值的方式-->
+            <Label Content="绑定控件值的方式"/>
+            <Slider x:Name="sd" Width="200" HorizontalAlignment="Left"/>
+            <TextBox Text="{Binding ElementName=sd, Path=Value, Mode=TwoWay}" Width="200" HorizontalAlignment="Left"/>
+            <!--绑定静态资源的方式-->
+            <Label Content="绑定静态资源的方式"/>
+            <TextBox Text="{Binding Source={StaticResource txt}, Path=Text}" Width="200" HorizontalAlignment="Left"/>
+            <!--绑定控件的数据上下文的方式-->
+            <Label Content="绑定控件的数据上下文的方式"/>
+            <TextBox x:Name="txt_new" 
+                     Width="200" 
+                     HorizontalAlignment="Left" 
+                     Text="{Binding Name, FallbackValue='DefaultName'}"/>
+
+            <!--绑定窗口的数据上下文的方式-->
+            <!--此时不需要控件定义名称，可重复绑定-->
+            <Label Content="绑定窗口的数据上下文的方式"/>
+            <TextBox Width="200" 
+                     HorizontalAlignment="Left" 
+                     Text="{Binding MainName, FallbackValue='DefaultName'}"/>
+            <TextBox Width="200" 
+                     HorizontalAlignment="Left" 
+                     Text="{Binding MainName, FallbackValue='DefaultName'}"/>
+            <Label Content="绑定窗口的数据上下文的方式，支持属性动态变更"/>
+            <TextBox Width="200" 
+                     HorizontalAlignment="Left" 
+                     Text="{Binding DynamicName, FallbackValue='DefaultName'}"/>
+            <Label Content="绑定窗口的数据上下文的方式，通过第三方组件实现动态变更"/>
+            <TextBox Width="200" 
+                     HorizontalAlignment="Left" 
+                     Text="{Binding DynamicName, FallbackValue='DefaultName'}"/>
+            <Button Command="{Binding SaveCommand}" Content="Click Me" 
+                    HorizontalAlignment="Left"
+                    Width="80"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
